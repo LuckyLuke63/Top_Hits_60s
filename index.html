@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>I 10 brani più ascoltati degli anni '60</title>
+  <title>I maggiori successi degli anni '60</title>
   <style>
     body { font-family: Arial,sans-serif; background: linear-gradient(135deg,#f2ebe0 0%,#ede0d3 100%); color: #3b2f2f; max-width:800px; margin:2em auto; padding:0 1em;}
     h1 { text-align:center; font-size:2.2em; margin-bottom:.2em; color:#8b4513;}
@@ -30,9 +30,8 @@
   </style>
 </head>
 <body>
-  <h1>🎵 I 10 brani più ascoltati degli anni '60</h1>
+  <h1>🎵 I maggiori successi degli anni '60</h1>
   <div class="subtitle">Anteprime di 30 secondi da Spotify con copertine originali</div>
-
   <div class="controls">
     <label for="yearSel"><strong>Anno:</strong></label>
     <select id="yearSel" onchange="renderYear(this.value)">
@@ -41,9 +40,7 @@
       <option value="1962">1962</option>
     </select>
   </div>
-
   <div id="list"></div>
-
   <div id="overlay">
     <div id="player">
       <h3 id="track-title"></h3>
@@ -53,7 +50,6 @@
       <button id="close" onclick="closePlayer()">Chiudi</button>
     </div>
   </div>
-
   <script>
     const tracksByYear = {
       "1960": [
@@ -81,14 +77,14 @@
         {rank:10, title:"Il pullover", artist:"Gianni Meccia", spotifyId:"6k1vlvRxxXeJt56utkGnUN"}
       ],
       "1962": [
-        {rank:1, title:"Pregherò (Stand by me)", artist:"Adriano Celentano", spotifyId:"2vMpgU0tcHfhJoT5jARN11"},
-        {rank:2, title:"Ogni giorno (Love me warm and tender)", artist:"Paul Anka", spotifyId:"3TmnUIbelFiDzrhZqavHU0"},
-        {rank:3, title:"Stai lontana da me (Tower of strength)", artist:"Adriano Celentano", spotifyId:"6scPTPLQZCTpOad4AdiYR3"},
-        {rank:4, title:"Quando quando quando", artist:"Tony Renis", spotifyId:"0gIknQBf4Ncjwiy9nk6oM5"},
-        {rank:5, title:"Speedy Gonzales", artist:"Pat Boone", spotifyId:"2kkF2eRfExAxi2HwInPVi7"},
-        {rank:6, title:"Cuando calienta el sol", artist:"Los Hermanos Rigual", spotifyId:"1RrkKeCCRW2gq58vPXvrT5"},
-        {rank:7, title:"Si è spento il sole", artist:"Adriano Celentano", spotifyId:"6scPTPLQZCTpOad4AdiYR3"},
-        {rank:8, title:"Let's twist again", artist:"Peppino Di Capri", spotifyId:"1iRxGyan1qQ83WKUi3u01Q"},
+        {rank:1, title:"Pregherò (Stand by me)", artist:"Adriano Celentano", spotifyId:"52RwoFzfa0Qx1UBa21Zn92"},
+        {rank:2, title:"Ogni giorno (Love me warm and tender)", artist:"Paul Anka", spotifyId:"4UFMRcVy53BPzILwpqWK5y"},
+        {rank:3, title:"Stai lontana da me (Tower of strength)", artist:"Adriano Celentano", spotifyId:"1YXxs3HqdatZlap8qD1WCH"},
+        {rank:4, title:"Quando quando quando", artist:"Tony Renis", spotifyId:"4UwQVj2v2gTATYzA3sSQBn"},
+        {rank:5, title:"Speedy Gonzales", artist:"Pat Boone", spotifyId:"52pDZoujP4zlX1th7qmety"},
+        {rank:6, title:"Cuando calienta el sol", artist:"Los Hermanos Rigual", spotifyId:"6hfUS6AYMIK8wVpeCHmUjT"},
+        {rank:7, title:"Si è spento il sole", artist:"Adriano Celentano", spotifyId:"2M7A16RBtZAgRuX2SIwCNv"},
+        {rank:8, title:"Let's twist again", artist:"Peppino Di Capri", spotifyId:"65ULJRsZeqNkFea6SuJbvM"},
         {rank:9, title:"Abat jour (Salomè)", artist:"Henry Wright", spotifyId:"3MOLLwD9WEA6n5j1ur2jrS"},
         {rank:10, title:"St. Tropez twist", artist:"Peppino Di Capri", spotifyId:"4WPStPQTwdLocxYFALHY7T"}
       ]
@@ -99,9 +95,7 @@
         const response = await fetch(`https://open.spotify.com/oembed?url=https://open.spotify.com/track/${spotifyId}`);
         const data = await response.json();
         return data.thumbnail_url || null;
-      } catch (error) {
-        return null;
-      }
+      } catch (error) { return null; }
     }
 
     async function renderYear(year) {
@@ -136,7 +130,7 @@
           if (coverUrl) {
             const img = document.createElement('img');
             img.src = coverUrl; img.alt=track.title+' - '+track.artist;
-            img.onload = () => coverDiv.innerHTML = '', coverDiv.appendChild(img);
+            img.onload = () => { coverDiv.innerHTML = ''; coverDiv.appendChild(img); };
             img.onerror = () => coverDiv.innerHTML = '💿';
           } else {
             coverDiv.innerHTML = '💿';
@@ -163,5 +157,3 @@
   </script>
 </body>
 </html>
-
-
